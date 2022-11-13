@@ -25,16 +25,7 @@ const api = axios.create({
   adapter: cache.adapter,
 });
 
-// api({
-//   url: "",
-//   method: "get",
-//   headers: { "Content-Type": "application/json" },
-// });
-
 const Profile = () => {
-  // const apiUrl = "http://api.blokness.io/";
-  // const apiKey = "EABD1AC1-53E9-4C9F-8F77-2027F309148D";
-
   const url = "http://localhost:8080/";
 
   const getWalletNfts = () => {
@@ -50,32 +41,8 @@ const Profile = () => {
       })
       .then((response) => {
         console.log(response);
-        //console.log(response.data);
       });
   };
-
-  // const getFromApi = async (url) => {
-  //   try {
-  //     const { data } = await axios.get(url, {
-  //       headers: {
-  //         "x-api-key": apiKey,
-  //         "Cache-Control": "no-cache",
-  //         "Content-Type": "application/json",
-  //         "Access-Control-Allow-Origin": "*",
-  //         "Access-Control-Allow-Headers": "*",
-  //       },
-  //     });
-  //     return data;
-  //   } catch (err) {
-  //     console.log(`unable to get data from ${url} - ${err}`);
-  //   }
-  // };
-
-  // const getWalletNfts = async (wallet) => {
-  //   const url = `${apiUrl}nfts?wallet=${wallet}`;
-  //   const nfts = await getFromApi(url);
-  //   return nfts;
-  // };
 
   useEffect(() => {
     getWalletNfts("0x5cd9665b52049a00e0c364c727f968d992714111");
