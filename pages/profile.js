@@ -3,6 +3,8 @@ import React from 'react';
 import ProfileInfo from '../components/ProfileInfo';
 import DomainCard from '../components/DomainCard';
 import dynamic from 'next/dynamic';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 const ProfileHeader = dynamic(
   () => {
@@ -12,6 +14,18 @@ const ProfileHeader = dynamic(
 );
 
 const Profile = () => {
+  const url = 'http://localhost:8080/';
+
+  const getWalletNfts = () => {
+    axios.get(`${url}getWalletNfts`).then((response) => {
+      console.log(response.data);
+    });
+  };
+
+  useEffect(() => {
+    getWalletNfts();
+  }, []);
+
   return (
     <div className="w-full h-full mt-12 text-white black-bg-gradient">
       <ProfileHeader />

@@ -39,7 +39,7 @@ const Navbar = () => {
       <div>
         <ConnectButton
           showBalance={false}
-          chainStatus="name"
+          // chainStatus="name"
           accountStatus="address"
         />
       </div>

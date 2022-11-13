@@ -12,7 +12,7 @@ import Layout from '../components/Layout';
 import '../styles/globals.css';
 
 const { chains, provider } = configureChains(
-  [chain.polygonMumbai],
+  [chain.mainnet, chain.polygon],
   [
     alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_KEY }),
     publicProvider(),
