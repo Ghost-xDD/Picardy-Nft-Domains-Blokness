@@ -24,8 +24,19 @@ app.get("/", (req, res) => {
 app.get("/walletNfts", async (req, res) => {
   const wallet = req.body.wallet;
   const nfts = await getWalletNfts(wallet);
-  console.log(nfts);
-  res.json(nfts);
+  const nftDetails = nfts.data;
+  const result = nftDetails.map((nft) => {
+    return {
+      id: nft.token_id,
+      name: nft.collection_name,
+      image: nft.image,
+      domainAddress: nft.collection_address,
+    };
+  });
+
+  let finalResult = await Promise.all(await result);
+  console.log(finalResult);
+  res.json(finalResult);
 });
 
 app.get("/domainHolders", async (req, res) => {
@@ -37,7 +48,24 @@ app.get("/domainHolders", async (req, res) => {
 app.get("/domainTransactions", async (req, res) => {
   const domainAddress = req.body.domainAddress;
   const transactions = await getDomainTransaction(domainAddress);
-  res.json(transactions);
+  const txDetails = transactions.data;
+  console.log(transactions);
+  const results = await txDetails.map(async (tx) => {
+    const fromAddress = tx.address_from;
+    const toAddress = tx.address_to;
+    const collectionAddress = tx.collection_address;
+    const collectionName = tx.collection_name;
+
+    return {
+      fromAddress,
+      toAddress,
+      collectionAddress,
+      collectionName,
+    };
+  });
+
+  let finalResult = await Promise.all(await results);
+  res.json(finalResult);
 });
 
 app.get("/domainTokenHistory", async (req, res) => {

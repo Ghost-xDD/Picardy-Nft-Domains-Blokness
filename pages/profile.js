@@ -7,6 +7,7 @@ import GetWalletCard from "../components/GetWalletCard";
 import DomainHolders from "../components/DomainHolders";
 import dynamic from "next/dynamic";
 import axios from "axios";
+import { setupCache } from "axios-cache-adapter";
 import { useState, useEffect } from "react";
 
 const ProfileHeader = dynamic(
@@ -15,6 +16,20 @@ const ProfileHeader = dynamic(
   },
   { ssr: false }
 );
+
+const cache = setupCache({
+  maxAge: 15 * 60 * 1000,
+});
+
+const api = axios.create({
+  adapter: cache.adapter,
+});
+
+// api({
+//   url: "",
+//   method: "get",
+//   headers: { "Content-Type": "application/json" },
+// });
 
 const Profile = () => {
   // const apiUrl = "http://api.blokness.io/";
@@ -27,9 +42,9 @@ const Profile = () => {
       domainAddress: "0x23581767a106ae21c074b2276d25e5c3e136a68b",
     };
     axios
-      .get(`${url}domainTransactions`, body, {
+      .get(`${url}walletNft`, body, {
         headers: {
-          "Content-Type": "application/json",
+          "Content-Type": "application/json, text/plain, */*, accept-encoding",
           "Cache-Control": "public",
         },
       })
@@ -46,7 +61,7 @@ const Profile = () => {
   //         "x-api-key": apiKey,
   //         "Cache-Control": "no-cache",
   //         "Content-Type": "application/json",
-  //         "Access-Control-Allow-Origin": "'http://localhost:3000'",
+  //         "Access-Control-Allow-Origin": "*",
   //         "Access-Control-Allow-Headers": "*",
   //       },
   //     });
@@ -63,7 +78,7 @@ const Profile = () => {
   // };
 
   useEffect(() => {
-    getWalletNfts("0x4c9F7207be28278b9DCA129f2e211AcfFf48Fb01");
+    getWalletNfts("0x5cd9665b52049a00e0c364c727f968d992714111");
   }, []);
 
   return (
