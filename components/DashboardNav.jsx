@@ -1,30 +1,30 @@
-import joinClassNames from '../utils/joinClassNames';
-import Link from 'next/link';
-import { useState } from 'react';
-import Image from 'next/image';
-import { AiOutlineMenu } from 'react-icons/ai';
-import { menu, close } from '../public/assets';
+import joinClassNames from "../utils/joinClassNames";
+import Link from "next/link";
+import { useState } from "react";
+import Image from "next/image";
+import { AiOutlineMenu } from "react-icons/ai";
+import { menu, close } from "../public/assets";
 
 const DashboardNav = ({ page }) => {
-  const [active, setActive] = useState('Profile');
+  const [active, setActive] = useState("Profile");
   const [toggle, setToggle] = useState(false);
 
   let navigation = [
     {
-      name: 'Profile',
-      href: '/profile',
+      name: "Profile",
+      href: "/profile",
     },
     {
-      name: 'Buy Domain',
-      href: '/buy-domain',
+      name: "Buy Domain",
+      href: "/buy-domain",
     },
     {
-      name: 'Search',
-      href: '/search',
+      name: "Search",
+      href: "/search",
     },
     {
-      name: 'Send Tokens',
-      href: '/send-tokens',
+      name: "Send Tokens",
+      href: "/send-tokens",
     },
   ];
 
@@ -41,8 +41,8 @@ const DashboardNav = ({ page }) => {
               href={item.href}
               className={`font-poppins font-normal cursor-pointer text-[16px] ${
                 active === item.name
-                  ? 'text-white bg-dashboardnav-gradient p-1 px-6 rounded-xl'
-                  : 'text-dimWhite hover:opacity-80'
+                  ? "text-white bg-dashboardnav-gradient p-1 px-6 rounded-xl"
+                  : "text-dimWhite hover:opacity-80"
               } `}
             >
               <span className="truncate">{item.name}</span>
@@ -62,7 +62,7 @@ const DashboardNav = ({ page }) => {
 
         <div
           className={`${
-            !toggle ? 'hidden' : 'flex'
+            !toggle ? "hidden" : "flex"
           } p-6 bg-black-gradient absolute top-20 right-0  mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
         >
           <ul className="list-none flex justify-end items-start flex-1 flex-col">
@@ -72,8 +72,8 @@ const DashboardNav = ({ page }) => {
                 href={item.href}
                 className={`font-poppins font-normal cursor-pointer mb-6 text-[16px] ${
                   active === item.name
-                    ? 'text-white bg-dashboardnav-gradient p-1 px-6 rounded-xl cursor-pointer'
-                    : 'text-dimWhite hover:opacity-80'
+                    ? "text-white bg-dashboardnav-gradient p-1 px-6 rounded-xl cursor-pointer"
+                    : "text-dimWhite hover:opacity-80"
                 } `}
               >
                 <span className="truncate">{item.name}</span>
