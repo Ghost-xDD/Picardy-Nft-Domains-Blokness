@@ -21,14 +21,17 @@ const HomeMinter = () => {
   };
 
   const getTldDomains = async () => {
-    const provider = new ethers.providers.Web3Provider(window.ethereum);
-    const signer = provider.getSigner();
+    const provider = new ethers.providers.JsonRpcProvider(
+      process.env.NEXT_PUBLIC_POLYGON_MUMBAI_ENDPOINT
+    );
+    // const signer = provider.getSigner();
 
     const newDomainFactory = new ethers.Contract(
       config.domainFactoryAddress,
       picardyDomainFactoryAbi,
-      signer
+      provider
     );
+    
     setDomainFactory(newDomainFactory);
 
     const tldAddresses = await newDomainFactory.getTldsArray().then((res) => {
