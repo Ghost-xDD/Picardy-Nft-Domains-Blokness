@@ -19,25 +19,70 @@ const TransferableDomains = () => {
       signer
     );
 
-    const defaultDomain = await domainResolver.getDefaultDomain(address, tld);
+    const defaultDomain = await domainResolver.getDefaultDomains(address);
+
+    const defaultDomainArr = defaultDomain.split('');
+    console.log(defaultDomainArr);
+    const domainDetails = await getDefaultDomains(defaultDomainArr);
+    console.log(domainDetails);
 
     console.log(defaultDomain);
-
-    const domainUri = await domainResolver.getDomainTokenUri(
-      defaultDomain,
-      tld
-    );
-    const formatImage = window.atob(domainUri.substring(29));
-
-    const result = JSON.parse(formatImage);
-    setResponse(result);
-    console.log(result);
   };
 
   useEffect(() => {
     getProfileDetails();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // converts the array of string to an array of objects containing the domain name and tld
+  const getDefaultDomains = async (defaultDomains) => {
+    let domainDetailsArr = [];
+    for (let i = 0; i < defaultDomains.length; i++) {
+      let domainDetails = {
+        domainName: '',
+        tld: '',
+      };
+      const domain = defaultDomains[i];
+      const splitArr = domain.split('.');
+      const domainName = splitArr[0];
+      const tld = '.' + splitArr[1];
+
+      domainDetails.domainName = domainName;
+      domainDetails.tld = tld;
+      domainDetailsArr.push(domainDetails);
+    }
+
+    return domainDetailsArr;
+  };
+
+  //this function get the images of all domains
+  const getDomainUri = async (domainDetailsArr) => {
+    let domainDetails = [];
+    for (i = 0; i < domainDetailsArr.length; i++) {
+      let newDomainDetails = {
+        domainName: '',
+        tld: '',
+        image: '',
+      };
+      const domainDetail = domainDetailsArr[i];
+
+      //this is where the image is gotten from
+      const domainUri = await domainResolver.getDomainTokenUri(
+        domainDetail.domainName,
+        domainDetail.tld
+      );
+      const domainImage = window.atob(domainUri.substring(29));
+      const result = JSON.parse(domainImage);
+
+      newDomainDetails.domainName = domainDetail.domainName;
+      newDomainDetails.tld = domainDetail.tld;
+      newDomainDetails.image = result.image;
+
+      domainDetails.push(newDomainDetails);
+    }
+
+    return domainDetails;
+  };
 
   return (
     <div>

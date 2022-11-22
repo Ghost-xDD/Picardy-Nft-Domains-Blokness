@@ -10,8 +10,8 @@ function Frame1() {
       viewBox="0 0 369 368"
     >
       <rect 
-        width="368"
-        height="368"
+        width="200"
+        height="200"
         x="0.5"
         fill="url(#paint0_linear_360_1545)"
         rx="20"

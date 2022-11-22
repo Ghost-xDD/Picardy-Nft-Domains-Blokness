@@ -1,5 +1,4 @@
 import styles from '../helper/style';
-import Head from 'next/head';
 import Frame1 from './svg/Frame1';
 import SmallColored from './svg/SmallColored';
 

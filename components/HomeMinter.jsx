@@ -4,19 +4,21 @@ import picardyDomainFactoryAbi from '../constants/picardyDomainFactoryAbi.json';
 import picardyDomainAbi from '../constants/picardyDomainAbi.json';
 import { ethers } from 'ethers';
 import { config } from '../constants';
-// import { toast, ToastContainer } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const HomeMinter = () => {
   const { address, isConnected } = useAccount();
   const [userDomain, setUserDomain] = useState('');
-  const [selectTld, setSelectTld] = useState('.blokness');
+  const [selectTld, setSelectTld] = useState('.link');
   const [domainFactory, setDomainFactory] = useState('');
   const [tlds, setTlds] = useState();
 
-  const notify = () => {
+  const notify = (e) => {
+    e.preventDefault();
+
     toast.error('Please connect a Compatible Web3 Wallet', {
-      position: toast.POSITION.TOP_LEFT,
+      position: toast.POSITION.TOP_CENTER,
     });
   };
 
@@ -31,7 +33,7 @@ const HomeMinter = () => {
       picardyDomainFactoryAbi,
       provider
     );
-    
+
     setDomainFactory(newDomainFactory);
 
     const tldAddresses = await newDomainFactory.getTldsArray().then((res) => {
@@ -42,6 +44,7 @@ const HomeMinter = () => {
 
   const handleChange = (event) => {
     setSelectTld(event.target.value);
+    console.log(event.target.value);
   };
 
   useEffect(() => {
@@ -127,6 +130,7 @@ const HomeMinter = () => {
             onClick={notify}
           >
             Buy Domain
+            <ToastContainer />
           </button>
         )}
       </form>
