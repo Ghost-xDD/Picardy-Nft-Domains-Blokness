@@ -15,7 +15,7 @@ const HomeMinter = () => {
   const [tlds, setTlds] = useState();
 
   const notify = () => {
-    toast.error('Please Connect a Compatible Web3 Wallet', {
+    toast.error('Please connect a Compatible Web3 Wallet', {
       position: toast.POSITION.TOP_LEFT,
     });
   };
