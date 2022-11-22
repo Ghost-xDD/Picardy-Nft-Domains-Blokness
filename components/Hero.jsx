@@ -1,9 +1,7 @@
 import styles from '../helper/style';
 import Head from 'next/head';
 import Frame1 from './svg/Frame1';
-import Rectangle from './svg/Rectangle';
-import SmallRectangle from './svg/SmallRectangle';
-import Frame3 from './svg/Frame3';
+import SmallColored from './svg/SmallColored';
 
 const Hero = ({ header, description }) => {
   return (
@@ -28,7 +26,7 @@ const Hero = ({ header, description }) => {
         </div>
 
         <div className=" ss:block sm:hidden">
-          <SmallRectangle />
+          <SmallColored />
         </div>
 
         {/* gradient start */}
