@@ -1,7 +1,9 @@
 import styles from '../helper/style';
 import Head from 'next/head';
+import Frame1 from './svg/Frame1';
 import Rectangle from './svg/Rectangle';
 import SmallRectangle from './svg/SmallRectangle';
+import Frame3 from './svg/Frame3';
 
 const Hero = ({ header, description }) => {
   return (
@@ -22,7 +24,7 @@ const Hero = ({ header, description }) => {
 
       <div className={`${styles.flexCenter} md:my-0 my-4 relative`}>
         <div className="hidden sm:block">
-          <Rectangle />
+          <Frame1 />
         </div>
 
         <div className=" ss:block sm:hidden">

@@ -2,13 +2,8 @@ import React from 'react';
 import ProfileRectangle from './svg/ProfileRectangle';
 import { FaWallet } from 'react-icons/fa';
 import styles from '../helper/style';
-import { useState, useEffect } from 'react';
+import Frame2 from './svg/Frame3';
 import { useAccount, useBalance } from 'wagmi';
-import { ethers } from 'ethers';
-import Head from 'next/head';
-
-const dummyBalance = 80;
-const dummyAddress = '0xhh8495mo0..';
 
 const ProfileHeader = () => {
   const { address } = useAccount();
@@ -36,9 +31,6 @@ const ProfileHeader = () => {
     return balanceFormatted;
   };
 
-  // const { ethereum } = window;
-  // console.log(ethereum);
-
   // console.log(address);
   // console.log(data);
 
@@ -48,7 +40,7 @@ const ProfileHeader = () => {
         className={`feature-bal rounded-none mx-0 block items-center justify-between flex-1 ${styles.flexStart} flex-col gap-6 py-10 md:flex-row md:mx-[100px] md:rounded-2xl xl:px-0 sm:px-32 px-6`}
       >
         <div>
-          <ProfileRectangle />
+          <Frame2 />
         </div>
 
         <div className="flex justify-between  black-orange-gradient w-full p-10 rounded-2xl">

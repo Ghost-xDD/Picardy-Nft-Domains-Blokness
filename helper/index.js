@@ -11,6 +11,10 @@ export const navLinks = [
     name: 'Custom TLD',
     href: '/custom-tld',
   },
+  {
+    name: 'Profile',
+    href: '/profile',
+  },
 ];
 
 export const faqQuestions = [

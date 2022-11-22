@@ -1,6 +1,5 @@
 import React from 'react';
 import GetWalletContent from './GetWalletContent';
-import TransactionContent from './TransactionContent';
 
 const dummyWallets = [
   {

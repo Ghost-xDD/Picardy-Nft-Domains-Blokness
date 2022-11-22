@@ -1,9 +1,12 @@
 import React from 'react';
-import ProfileInfo from '../components/ProfileInfo';
-import ProfileHeader from '../components/ProfileHeader';
-import ComingSoon from '../components/ComingSoon';
 
-const Search = () => {
+import ProfileInfo from '../components/ProfileInfo';
+import TransactionCard from '../components/TransactionCard';
+import GetWalletCard from '../components/GetWalletCard';
+import DomainHolders from '../components/DomainHolders';
+import ProfileHeader from '../components/ProfileHeader';
+
+const Portfolio = () => {
   return (
     <div className="w-full h-full mt-12 text-white black-bg-gradient">
       <ProfileHeader />
@@ -12,10 +15,16 @@ const Search = () => {
         <ProfileInfo />
       </div>
       <div>
-        <ComingSoon />
+        <TransactionCard />
+      </div>
+      <div className="mt-8">
+        <GetWalletCard />
+      </div>
+      <div className="mt-8">
+        <DomainHolders />
       </div>
     </div>
   );
 };
 
-export default Search;
+export default Portfolio;

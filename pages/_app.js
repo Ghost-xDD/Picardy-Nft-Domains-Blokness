@@ -12,7 +12,7 @@ import Layout from '../components/Layout';
 import '../styles/globals.css';
 
 const { chains, provider } = configureChains(
-  [chain.mainnet, chain.polygon],
+  [chain.polygonMumbai],
   [
     alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_KEY }),
     publicProvider(),
@@ -25,7 +25,7 @@ const { connectors } = getDefaultWallets({
 });
 
 const wagmiClient = createClient({
-  autoConnect: true,
+  autoConnect: false,
   connectors,
   provider,
 });

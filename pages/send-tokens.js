@@ -1,9 +1,10 @@
 import React from 'react';
+
 import ProfileInfo from '../components/ProfileInfo';
 import ProfileHeader from '../components/ProfileHeader';
 import ComingSoon from '../components/ComingSoon';
 
-const Search = () => {
+const SendTokens = () => {
   return (
     <div className="w-full h-full mt-12 text-white black-bg-gradient">
       <ProfileHeader />
@@ -18,4 +19,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default SendTokens;

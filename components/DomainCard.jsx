@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
 import DomainName from './svg/DomainName';
-import { ethers } from 'ethers';
-import domainResolverAbi from '../constants/domainResolver.json';
-import sbtResolverAbi from '../constants/sbtResolver.json';
+import Image from 'next/image';
 import styles from '../helper/style';
 
 const domain = 'esse.3rd';
 const communityName = '.3rd';
 
-const DomainCard = () => {
+const DomainCard = ({ response }) => {
   const [isEditing, setEditing] = useState(false);
-  const [defaultDomain, setDefaultDomain] = useState(null);
-  const [domainUri, setDomainUri] = useState(null);
-  const [domainData, setDomainData] = useState(null);
+
+  const { name, image } = response;
 
   const editingDomainData = (
     <>
@@ -80,17 +77,17 @@ const DomainCard = () => {
           className={`feature-bal rounded-3xl mx-0 block items-center justify-between flex-1 ${styles.flexStart} flex-col gap-6 py-10 md:flex-row md:mx-[30px] md:rounded-2xl xl:px-0 sm:px-28 px-1`}
         >
           <div className="block gap-10 items-center sm:flex">
-            <div className="">
-              <DomainName />
-            </div>
+            <Image src={image} alt="" width="103" height="103" />
 
             <div>
               <div>
-                <h2 className="mb-2 font-bold text-xl mt-4 sm:mt-0">
-                  {domain}
-                </h2>
+                <h2 className="mb-2 font-bold text-xl mt-4 sm:mt-0">{name}</h2>
                 <p className="mb-2">
-                  A Domain issued to {communityName} members
+                  A Domain issued to{' '}
+                  <span className="italic">
+                    .{name ? name.split('.')[1] : '---'}
+                  </span>{' '}
+                  members
                 </p>
               </div>
 
