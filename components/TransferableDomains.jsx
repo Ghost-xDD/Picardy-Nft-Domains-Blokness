@@ -20,12 +20,12 @@ const TransferableDomains = () => {
     );
 
     const defaultDomain = await domainResolver.getDefaultDomains(address);
-    console.log("deafult domains:", defaultDomain);
+    // console.log("deafult domains:", defaultDomain);
 
     const defaultDomainArr = defaultDomain.split(" ");
-    console.log("deafult domain array:", defaultDomainArr);
+    // console.log("deafult domain array:", defaultDomainArr);
     const domainDetails = await getDefaultDomains(defaultDomainArr);
-    console.log("domain details: ", domainDetails);
+    // console.log("domain details: ", domainDetails);
 
     const domainUriArr = await getDomainUri(domainDetails);
     console.log("domain uri", domainUriArr);
@@ -89,10 +89,7 @@ const TransferableDomains = () => {
         domainDetail.tld
       );
       const domainImage = window.atob(domainUri.substring(29));
-      console.log(domainImage);
-
       const result = JSON.parse(domainImage);
-      //console.log(result);
 
       newDomainDetails.domainName = domainDetail.domainName;
       newDomainDetails.tld = domainDetail.tld;
