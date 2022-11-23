@@ -6,10 +6,11 @@ import styles from '../helper/style';
 const domain = 'esse.3rd';
 const communityName = '.3rd';
 
-const DomainCard = ({ response }) => {
+const DomainCard = ({ domainName, tld, image }) => {
   const [isEditing, setEditing] = useState(false);
 
-  const { name, image } = response;
+  // const { domainName, image } = response;
+  // console.log(domainName);
 
   const editingDomainData = (
     <>
@@ -81,12 +82,12 @@ const DomainCard = ({ response }) => {
 
             <div>
               <div>
-                <h2 className="mb-2 font-bold text-xl mt-4 sm:mt-0">{name}</h2>
+                <h2 className="mb-2 font-bold text-xl mt-4 sm:mt-0">
+                  {domainName}
+                  {tld}
+                </h2>
                 <p className="mb-2">
-                  A Domain issued to{' '}
-                  <span className="italic">
-                    .{name ? name.split('.')[1] : '---'}
-                  </span>{' '}
+                  A Domain issued to <span className="italic mr-1">{tld}</span>
                   members
                 </p>
               </div>
