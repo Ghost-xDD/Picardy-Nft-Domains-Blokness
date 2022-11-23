@@ -1,157 +1,72 @@
 [
   {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "_name",
-        "type": "string"
-      },
-      {
-        "internalType": "string",
-        "name": "_symbol",
-        "type": "string"
-      },
-      {
-        "internalType": "address",
-        "name": "_tldOwner",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_domainPrice",
-        "type": "uint256"
-      },
-      {
-        "internalType": "bool",
-        "name": "_buyingEnabled",
-        "type": "bool"
-      },
-      {
-        "internalType": "address",
-        "name": "_factoryAddress",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_metadataAddress",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "nonpayable",
-    "type": "constructor"
-  },
-  {
     "anonymous": false,
     "inputs": [
       {
-        "indexed": true,
-        "internalType": "address",
-        "name": "_to",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "_tokenId",
-        "type": "uint256"
-      }
-    ],
-    "name": "Attest",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      }
-    ],
-    "name": "DataChanged",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
+        "indexed": false,
         "internalType": "address",
         "name": "user",
         "type": "address"
       },
       {
         "indexed": false,
-        "internalType": "string",
-        "name": "defaultDomain",
-        "type": "string"
+        "internalType": "address",
+        "name": "tAddr",
+        "type": "address"
       }
     ],
-    "name": "DefaultDomainChanged",
+    "name": "DeprecatedTldAdded",
     "type": "event"
   },
   {
     "anonymous": false,
     "inputs": [
       {
-        "indexed": true,
+        "indexed": false,
         "internalType": "address",
         "name": "user",
         "type": "address"
       },
       {
         "indexed": false,
-        "internalType": "string",
-        "name": "fullDomainName",
-        "type": "string"
+        "internalType": "address",
+        "name": "tAddr",
+        "type": "address"
       }
     ],
-    "name": "DomainBurned",
+    "name": "DeprecatedTldRemoved",
     "type": "event"
   },
   {
     "anonymous": false,
     "inputs": [
       {
-        "indexed": true,
+        "indexed": false,
         "internalType": "address",
         "name": "user",
         "type": "address"
       },
       {
         "indexed": false,
-        "internalType": "bool",
-        "name": "domainBuyingToggle",
-        "type": "bool"
+        "internalType": "address",
+        "name": "fAddr",
+        "type": "address"
       }
     ],
-    "name": "DomainBuyingToggle",
+    "name": "FactoryAddressAdded",
     "type": "event"
   },
   {
     "anonymous": false,
     "inputs": [
       {
-        "indexed": true,
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      },
-      {
-        "indexed": true,
+        "indexed": false,
         "internalType": "address",
         "name": "owner",
         "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "string",
-        "name": "fullDomainName",
-        "type": "string"
       }
     ],
-    "name": "DomainCreated",
+    "name": "HubAdded",
     "type": "event"
   },
   {
@@ -159,12 +74,12 @@
     "inputs": [
       {
         "indexed": false,
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
+        "internalType": "uint8",
+        "name": "version",
+        "type": "uint8"
       }
     ],
-    "name": "MintingDisabledForever",
+    "name": "Initialized",
     "type": "event"
   },
   {
@@ -187,207 +102,77 @@
     "type": "event"
   },
   {
-    "anonymous": false,
     "inputs": [
       {
-        "indexed": true,
         "internalType": "address",
-        "name": "user",
+        "name": "_deprecatedTldAddress",
         "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "referralFee",
-        "type": "uint256"
       }
     ],
-    "name": "ReferralFeeChanged",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "_to",
-        "type": "address"
-      },
-      {
-        "indexed": true,
-        "internalType": "uint256",
-        "name": "_tokenId",
-        "type": "uint256"
-      }
-    ],
-    "name": "Revoke",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "tldPrice",
-        "type": "uint256"
-      }
-    ],
-    "name": "TldPriceChanged",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": true,
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "tldRoyalty",
-        "type": "uint256"
-      }
-    ],
-    "name": "TldRoyaltyChanged",
-    "type": "event"
+    "name": "addDeprecatedTldAddress",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   },
   {
     "inputs": [
+      {
+        "internalType": "address",
+        "name": "_factoryAddress",
+        "type": "address"
+      }
+    ],
+    "name": "addFactoryAddress",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_hubAddress",
+        "type": "address"
+      }
+    ],
+    "name": "addHubAddress",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "factories",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_addr",
+        "type": "address"
+      },
       {
         "internalType": "string",
-        "name": "_domainName",
+        "name": "_tld",
         "type": "string"
       }
     ],
-    "name": "burn",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "buyingDisabledForever",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "buyingEnabled",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_metadataAddress",
-        "type": "address"
-      }
-    ],
-    "name": "changeMetadataAddress",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "_minter",
-        "type": "address"
-      }
-    ],
-    "name": "changeMinter",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_maxLength",
-        "type": "uint256"
-      }
-    ],
-    "name": "changeNameMaxLength",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_price",
-        "type": "uint256"
-      }
-    ],
-    "name": "changePrice",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "name": "defaultNames",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "disableBuyingForever",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "domainIdsNames",
+    "name": "getDefaultDomain",
     "outputs": [
       {
         "internalType": "string",
@@ -401,37 +186,17 @@
   {
     "inputs": [
       {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
+        "internalType": "address",
+        "name": "_addr",
+        "type": "address"
       }
     ],
-    "name": "domains",
+    "name": "getDefaultDomains",
     "outputs": [
       {
         "internalType": "string",
-        "name": "name",
+        "name": "",
         "type": "string"
-      },
-      {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "holder",
-        "type": "address"
-      },
-      {
-        "internalType": "string",
-        "name": "data",
-        "type": "string"
-      },
-      {
-        "internalType": "bool",
-        "name": "hasProof",
-        "type": "bool"
       }
     ],
     "stateMutability": "view",
@@ -446,53 +211,7 @@
       },
       {
         "internalType": "string",
-        "name": "_data",
-        "type": "string"
-      }
-    ],
-    "name": "editData",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "_domainName",
-        "type": "string"
-      }
-    ],
-    "name": "editDefaultDomain",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "factoryAddress",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "freezeMetadata",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "_domainName",
+        "name": "_tld",
         "type": "string"
       }
     ],
@@ -513,6 +232,11 @@
         "internalType": "string",
         "name": "_domainName",
         "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_tld",
+        "type": "string"
       }
     ],
     "name": "getDomainHolder",
@@ -532,135 +256,14 @@
         "internalType": "string",
         "name": "_domainName",
         "type": "string"
-      }
-    ],
-    "name": "getDomainTokenId",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "_domainName",
-        "type": "string"
-      }
-    ],
-    "name": "getHasProof",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getOwner",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "idCounter",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "metadataAddress",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "metadataFrozen",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "_domainName",
-        "type": "string"
       },
       {
-        "internalType": "address",
-        "name": "_domainHolder",
-        "type": "address"
-      },
-      {
-        "internalType": "address",
-        "name": "_soulWallet",
-        "type": "address"
+        "internalType": "string",
+        "name": "_tld",
+        "type": "string"
       }
     ],
-    "name": "mint",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "payable",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "minter",
-    "outputs": [
-      {
-        "internalType": "address",
-        "name": "",
-        "type": "address"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "name",
+    "name": "getDomainTokenUri",
     "outputs": [
       {
         "internalType": "string",
@@ -673,12 +276,12 @@
   },
   {
     "inputs": [],
-    "name": "nameMaxLength",
+    "name": "getFactoriesArray",
     "outputs": [
       {
-        "internalType": "uint256",
+        "internalType": "address[]",
         "name": "",
-        "type": "uint256"
+        "type": "address[]"
       }
     ],
     "stateMutability": "view",
@@ -687,12 +290,89 @@
   {
     "inputs": [
       {
-        "internalType": "bytes32",
-        "name": "",
-        "type": "bytes32"
+        "internalType": "address",
+        "name": "_addr",
+        "type": "address"
       }
     ],
-    "name": "nullifierExixt",
+    "name": "getFirstDefaultDomain",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_tldName",
+        "type": "string"
+      }
+    ],
+    "name": "getTldAddress",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_tldName",
+        "type": "string"
+      }
+    ],
+    "name": "getTldFactoryAddress",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getTlds",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "initialize",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "isTldDeprecated",
     "outputs": [
       {
         "internalType": "bool",
@@ -719,33 +399,27 @@
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      }
-    ],
-    "name": "ownerOf",
-    "outputs": [
-      {
         "internalType": "address",
-        "name": "",
+        "name": "_deprecatedTldAddress",
         "type": "address"
       }
     ],
-    "stateMutability": "view",
+    "name": "removeDeprecatedTldAddress",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
-    "inputs": [],
-    "name": "price",
-    "outputs": [
+    "inputs": [
       {
         "internalType": "uint256",
-        "name": "",
+        "name": "_addrIndex",
         "type": "uint256"
       }
     ],
-    "stateMutability": "view",
+    "name": "removeFactoryAddress",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -758,77 +432,6 @@
   {
     "inputs": [
       {
-        "internalType": "bytes4",
-        "name": "interfaceId",
-        "type": "bytes4"
-      }
-    ],
-    "name": "supportsInterface",
-    "outputs": [
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "symbol",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "toggleBuyingDomains",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "_tokenId",
-        "type": "uint256"
-      }
-    ],
-    "name": "tokenURI",
-    "outputs": [
-      {
-        "internalType": "string",
-        "name": "",
-        "type": "string"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "totalSupply",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "address",
         "name": "newOwner",
         "type": "address"
@@ -836,35 +439,6 @@
     ],
     "name": "transferOwnership",
     "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "string",
-        "name": "_domainName",
-        "type": "string"
-      },
-      {
-        "internalType": "uint256",
-        "name": "_seed",
-        "type": "uint256"
-      }
-    ],
-    "name": "updateHasProof",
-    "outputs": [
-      {
-        "internalType": "bytes32",
-        "name": "",
-        "type": "bytes32"
-      },
-      {
-        "internalType": "bool",
-        "name": "",
-        "type": "bool"
-      }
-    ],
     "stateMutability": "nonpayable",
     "type": "function"
   }
