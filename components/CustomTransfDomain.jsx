@@ -37,7 +37,8 @@ const CustomTransfDomain = () => {
       formattedSymbol,
       address,
       formattedPrice,
-      buyingEnabled
+      buyingEnabled,
+      // { gasLimit: 1e6 }
     );
     setDomainAddress(domainAddress);
   };

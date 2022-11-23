@@ -21,12 +21,12 @@ const TransferableDomains = () => {
 
     const defaultDomain = await domainResolver.getDefaultDomains(address);
 
-    const defaultDomainArr = defaultDomain.split('');
-    console.log(defaultDomainArr);
+    const defaultDomainArr = defaultDomain.split(' ');
     const domainDetails = await getDefaultDomains(defaultDomainArr);
     console.log(domainDetails);
 
-    console.log(defaultDomain);
+    const domainUriArr = await getDomainUri(domainDetails);
+    console.log(domainUriArr);
   };
 
   useEffect(() => {
@@ -57,8 +57,17 @@ const TransferableDomains = () => {
 
   //this function get the images of all domains
   const getDomainUri = async (domainDetailsArr) => {
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    const signer = provider.getSigner();
+
+    const domainResolver = new ethers.Contract(
+      config.domainResolverAddress,
+      domainResolverAbi,
+      signer
+    );
+
     let domainDetails = [];
-    for (i = 0; i < domainDetailsArr.length; i++) {
+    for (let i = 0; i < domainDetailsArr.length; i++) {
       let newDomainDetails = {
         domainName: '',
         tld: '',
@@ -72,7 +81,11 @@ const TransferableDomains = () => {
         domainDetail.tld
       );
       const domainImage = window.atob(domainUri.substring(29));
+
+      console.log(domainImage);
+      
       const result = JSON.parse(domainImage);
+      console.log(result);
 
       newDomainDetails.domainName = domainDetail.domainName;
       newDomainDetails.tld = domainDetail.tld;
