@@ -78,6 +78,7 @@ const HomeMinter = () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
 
+    const formatPrice = ethers.utils.parseUnits(selectTldPrice, "ether");
     const formattedName = userDomain.replace(/\s+/g, "").toLowerCase().trim();
     const tldAddress = await domainFactory.tldNamesAddresses(selectTld);
 
@@ -89,7 +90,9 @@ const HomeMinter = () => {
       signer
     );
 
-    const mint = await domainContract.mint(formattedName, address);
+    const mint = await domainContract.mint(formattedName, address, {
+      value: formatPrice,
+    });
     const receipt = await mint.wait();
     console.log(receipt);
     const txHash = await receipt.transactionHash;
