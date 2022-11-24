@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import domainResolverAbi from '../constants/domainResolver.json';
-import { useAccount } from 'wagmi';
-import { ethers } from 'ethers';
-import { config } from '../constants';
-import DomainCard from './DomainCard';
-import 'react-loading-skeleton/dist/skeleton.css';
-import SkeletonCard from './SkeletonCard';
+import { useState, useEffect } from "react";
+import domainResolverAbi from "../constants/domainResolver.json";
+import { useAccount } from "wagmi";
+import { ethers } from "ethers";
+import { config } from "../constants";
+import DomainCard from "./DomainCard";
+import "react-loading-skeleton/dist/skeleton.css";
+import SkeletonCard from "./SkeletonCard";
 
 const TransferableDomains = () => {
   const { address, isConnected } = useAccount();
@@ -27,13 +27,13 @@ const TransferableDomains = () => {
     const defaultDomain = await domainResolver.getDefaultDomains(address);
     // console.log("deafult domains:", defaultDomain);
 
-    const defaultDomainArr = defaultDomain.split(' ');
-    // console.log("deafult domain array:", defaultDomainArr);
+    const defaultDomainArr = defaultDomain.split(" ");
+    console.log("deafult domain array:", defaultDomainArr);
     const domainDetails = await getDefaultDomains(defaultDomainArr);
     // console.log("domain details: ", domainDetails);
 
     const domainUriArr = await getDomainUri(domainDetails);
-    console.log('domain uri', domainUriArr);
+    console.log("domain uri", domainUriArr);
     setResponse(domainUriArr);
     setLoading(false);
   };
@@ -47,20 +47,20 @@ const TransferableDomains = () => {
   const getDefaultDomains = async (defaultDomains) => {
     let domainDetailsArr = [];
     let defaultDomainLength;
-    if (defaultDomains[1] === '') {
+    if (defaultDomains[defaultDomains.length - 1] === "") {
       defaultDomainLength = defaultDomains.length - 1;
     } else {
       defaultDomainLength = defaultDomains.length;
     }
     for (let i = 0; i < defaultDomainLength; i++) {
       let domainDetails = {
-        domainName: '',
-        tld: '',
+        domainName: "",
+        tld: "",
       };
       const domain = defaultDomains[i];
-      const splitArr = domain.split('.');
+      const splitArr = domain.split(".");
       const domainName = splitArr[0];
-      const tld = '.' + splitArr[1];
+      const tld = "." + splitArr[1];
 
       domainDetails.domainName = domainName;
       domainDetails.tld = tld;
@@ -84,9 +84,9 @@ const TransferableDomains = () => {
     let domainDetails = [];
     for (let i = 0; i < domainDetailsArr.length; i++) {
       let newDomainDetails = {
-        domainName: '',
-        tld: '',
-        image: '',
+        domainName: "",
+        tld: "",
+        image: "",
       };
       const domainDetail = domainDetailsArr[i];
 

@@ -1,25 +1,45 @@
-import { useState, useEffect } from 'react';
-import { useAccount } from 'wagmi';
-import picardyDomainFactoryAbi from '../constants/picardyDomainFactoryAbi.json';
-import picardyDomainAbi from '../constants/picardyDomainAbi.json';
-import { ethers } from 'ethers';
-import { config } from '../constants';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { useState, useEffect } from "react";
+import { useAccount } from "wagmi";
+import picardyDomainFactoryAbi from "../constants/picardyDomainFactoryAbi.json";
+import picardyDomainAbi from "../constants/picardyDomainAbi.json";
+import { ethers } from "ethers";
+import { config } from "../constants";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const HomeMinter = () => {
   const { address, isConnected } = useAccount();
-  const [userDomain, setUserDomain] = useState('');
-  const [selectTld, setSelectTld] = useState('.link');
-  const [domainFactory, setDomainFactory] = useState('');
+  const [userDomain, setUserDomain] = useState("");
+  const [selectTld, setSelectTld] = useState(".link");
+  const [selectTldPrice, setSelectTldPrice] = useState(0.0);
+  const [domainFactory, setDomainFactory] = useState("");
   const [tlds, setTlds] = useState();
 
   const notify = (e) => {
     e.preventDefault();
 
-    toast.error('Please connect a Compatible Web3 Wallet', {
+    toast.error("Please connect a Compatible Web3 Wallet", {
       position: toast.POSITION.TOP_CENTER,
     });
+  };
+
+  const getTldPrice = async (tld) => {
+    const provider = new ethers.providers.JsonRpcProvider(
+      process.env.NEXT_PUBLIC_POLYGON_MUMBAI_ENDPOINT
+    );
+
+    const tldAddress = await domainFactory.tldNamesAddresses(tld);
+
+    const domainContract = new ethers.Contract(
+      tldAddress,
+      picardyDomainAbi,
+      provider
+    );
+
+    const price = await domainContract.price();
+    const formatPrice = ethers.utils.formatEther(price);
+    setSelectTldPrice(formatPrice);
+    console.log(formatPrice);
   };
 
   const getTldDomains = async () => {
@@ -44,6 +64,7 @@ const HomeMinter = () => {
 
   const handleChange = (event) => {
     setSelectTld(event.target.value);
+    getTldPrice(event.target.value);
     console.log(event.target.value);
   };
 
@@ -57,7 +78,7 @@ const HomeMinter = () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
 
-    const formattedName = userDomain.replace(/\s+/g, '').toLowerCase().trim();
+    const formattedName = userDomain.replace(/\s+/g, "").toLowerCase().trim();
     const tldAddress = await domainFactory.tldNamesAddresses(selectTld);
 
     console.log(formattedName, tldAddress);
@@ -105,13 +126,13 @@ const HomeMinter = () => {
                       {option}
                     </option>
                   ))
-                : '...'}
+                : "..."}
             </select>
           </div>
         </div>
 
         <p className="text-white font-bold text-center mb-4">
-          Domain Price: 0.003ETH
+          Domain Price: {selectTldPrice} MATIC
         </p>
 
         {isConnected && (
