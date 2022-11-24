@@ -1,24 +1,24 @@
 import React from 'react';
 
-function Frame1() {
+function SmallColored() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="200"
       height="200"
       fill="none"
-      viewBox="0 0 369 368"
+      viewBox="0 0 200 200"
     >
-      <rect 
+      <rect
         width="200"
         height="200"
         x="0.5"
-        fill="url(#paint0_linear_360_1545)"
+        fill="url(#paint0_linear_200_1545)"
         rx="20"
       ></rect>
       <defs>
         <linearGradient
-          id="paint0_linear_360_1545"
+          id="paint0_linear_200_1545"
           x1="-106.22"
           x2="399.412"
           y1="443.808"
@@ -34,4 +34,4 @@ function Frame1() {
   );
 }
 
-export default Frame1;
+export default SmallColored;
