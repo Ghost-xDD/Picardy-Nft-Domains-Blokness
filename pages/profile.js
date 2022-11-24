@@ -1,12 +1,13 @@
 import React from 'react';
 import ProfileHeader from '../components/ProfileHeader';
 import ProfileInfo from '../components/ProfileInfo';
-// import TransferableDomains from '../components/TransferableDomains';
 import dynamic from 'next/dynamic';
 import axios from 'axios';
 import { useAccount } from 'wagmi';
 // import { setupCache } from "axios-cache-adapter";
 import { useState, useEffect } from 'react';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+import styles from '../helper/style';
 
 const TransferableDomains = dynamic(
   () => {
@@ -69,22 +70,22 @@ const Profile = () => {
             </div>
           </div>
         )}
-        {/* {!isConnected && (
-        <div
-          className={`h-full md:flex-row flex-col ${styles.paddingY} items-center text-center w-full px-[400px]`}
-        >
+        {!isConnected && (
           <div
-            className={`feature-bal rounded-3xl mx-0 flex flex-col items-center gap-6 py-20 my-20 md:rounded-2xl xl:px-0 sm:px-28 px-1 w-full`}
+            className={`h-full md:flex-row flex-col ${styles.paddingY} items-center text-center w-full px-[400px]`}
           >
-            <h1 className="text-white w-full h-full mt-12">
-              Please Connect Wallet to Continue
-            </h1>
-            <span>
-              <ConnectButton />
-            </span>
+            <div
+              className={`feature-bal rounded-3xl mx-0 flex flex-col items-center gap-6 py-20 my-20 md:rounded-2xl xl:px-0 sm:px-28 px-1 w-full`}
+            >
+              <h1 className="text-white w-full h-full mt-12">
+                Please Connect Wallet to Continue
+              </h1>
+              <span>
+                <ConnectButton />
+              </span>
+            </div>
           </div>
-        </div>
-      )} */}
+        )}
       </>
     )
   );

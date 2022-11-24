@@ -43,8 +43,6 @@ const TransferableDomains = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(response);
-
   // converts the array of string to an array of objects containing the domain name and tld
   const getDefaultDomains = async (defaultDomains) => {
     let domainDetailsArr = [];
