@@ -28,7 +28,7 @@ const TransferableDomains = () => {
     // console.log("deafult domains:", defaultDomain);
 
     const defaultDomainArr = defaultDomain.split(" ");
-    console.log("deafult domain array:", defaultDomainArr);
+    //console.log("deafult domain array:", defaultDomainArr);
     const domainDetails = await getDefaultDomains(defaultDomainArr);
     // console.log("domain details: ", domainDetails);
 
