@@ -3,8 +3,8 @@ import React from "react";
 function Fill() {
   return (
     <svg
-      width="134"
-      height="132"
+      width="80"
+      height="80"
       viewBox="0 0 134 132"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

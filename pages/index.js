@@ -1,12 +1,12 @@
-import styles from '../helper/style';
-import Head from 'next/head';
-import { HomeMinter, Hero, Description, Faq } from '../components';
+import styles from "../helper/style";
+import Head from "next/head";
+import { HomeMinter, Hero, Description, Faq } from "../components";
 
-import { faqQuestions } from '../helper';
+import { faqQuestions } from "../helper";
 
 export default function Home() {
-  const header = 'Permissionless NFT Domains';
-  const description = 'Mint your identity on the Blockchain';
+  const header = "Permissionless NFT Domains";
+  const description = "Mint your identity on the Blockchain";
 
   return (
     <div className=" w-full overflow-hidden">
@@ -29,7 +29,7 @@ export default function Home() {
           <Description />
           <div className="text-white mt-28">
             <h1 className="text-4xl text-center">
-              Frequently Asked Questions (FAQS)
+              Frequently Asked Questions (FAQs)
             </h1>
             <p className="text-center mt-8">
               If your question is not answered below, please read the docs or
