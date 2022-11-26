@@ -1,6 +1,7 @@
-import styles from '../helper/style';
-import Frame1 from './svg/Frame1';
-import SmallColored from './svg/SmallColored';
+import styles from "../helper/style";
+import Frame1 from "./svg/Frame1";
+import SmallColored from "./svg/SmallColored";
+import Frame2 from "./svg/Frame3";
 
 const Hero = ({ header, description }) => {
   return (
