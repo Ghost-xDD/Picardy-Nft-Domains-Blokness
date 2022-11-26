@@ -10,7 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 const HomeMinter = () => {
   const { address, isConnected } = useAccount();
   const [userDomain, setUserDomain] = useState("");
-  const [selectTld, setSelectTld] = useState(".link");
+  const [selectTld, setSelectTld] = useState(".picardy");
   const [selectTldPrice, setSelectTldPrice] = useState(0.0);
   const [domainFactory, setDomainFactory] = useState("");
   const [tlds, setTlds] = useState();
@@ -78,7 +78,7 @@ const HomeMinter = () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
 
-    const formatPrice = ethers.utils.parseUnits(selectTldPrice, "ether");
+    const formatPrice = await ethers.utils.parseUnits(selectTldPrice, 18);
     const formattedName = userDomain.replace(/\s+/g, "").toLowerCase().trim();
     const tldAddress = await domainFactory.tldNamesAddresses(selectTld);
 
