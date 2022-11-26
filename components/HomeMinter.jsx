@@ -11,7 +11,7 @@ const HomeMinter = () => {
   const { address, isConnected } = useAccount();
   const [userDomain, setUserDomain] = useState("");
   const [selectTld, setSelectTld] = useState(".picardy");
-  const [selectTldPrice, setSelectTldPrice] = useState(0.0);
+  const [selectTldPrice, setSelectTldPrice] = useState("0.5");
   const [domainFactory, setDomainFactory] = useState("");
   const [tlds, setTlds] = useState();
 
