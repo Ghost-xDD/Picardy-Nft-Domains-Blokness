@@ -1,16 +1,16 @@
-import Switch from './Switch';
-import { useState } from 'react';
-import { useAccount } from 'wagmi';
-import { config } from '../constants';
-import { ethers } from 'ethers';
-import picardDomainFactoryAbi from '../constants/picardyDomainFactoryAbi.json';
+import Switch from "./Switch";
+import { useState } from "react";
+import { useAccount } from "wagmi";
+import { config } from "../constants";
+import { ethers } from "ethers";
+import picardDomainFactoryAbi from "../constants/picardyDomainFactoryAbi.json";
 
 const CustomTransfDomain = () => {
   const { address } = useAccount();
-  const [domainAddress, setDomainAddress] = useState('');
-  const [tldName, setTldName] = useState('');
-  const [price, setPrice] = useState('');
-  const [symbol, setSymbol] = useState('');
+  const [domainAddress, setDomainAddress] = useState("");
+  const [tldName, setTldName] = useState("");
+  const [price, setPrice] = useState("");
+  const [symbol, setSymbol] = useState("");
   const [buyingEnabled, setBuyingEnabled] = useState(true);
 
   const createDomain = async (e) => {
@@ -19,9 +19,9 @@ const CustomTransfDomain = () => {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();
 
-    const formattedTldName = tldName.replace(/\s+/g, '').toLowerCase().trim();
-    const formattedSymbol = symbol.replace(/\s+/g, '').toUpperCase().trim();
-    const formattedPrice = ethers.utils.parseEther(price, 'wei');
+    const formattedTldName = tldName.replace(/\s+/g, "").toLowerCase().trim();
+    const formattedSymbol = symbol.replace(/\s+/g, "").toUpperCase().trim();
+    const formattedPrice = ethers.utils.parseEther(price, "wei");
 
     console.log(formattedTldName, formattedSymbol, price, buyingEnabled);
 
@@ -37,7 +37,7 @@ const CustomTransfDomain = () => {
       formattedSymbol,
       address,
       formattedPrice,
-      buyingEnabled,
+      buyingEnabled
       // { gasLimit: 1e6 }
     );
     setDomainAddress(domainAddress);
@@ -99,7 +99,7 @@ const CustomTransfDomain = () => {
         </button>
 
         <p className="text-gradient font-bold text-center mt-3">
-          except .eth, .ens, .com, .org, .net, .smol, .punk, .dao, .xyz
+          except .eth, .ens, .com, .org, .net, .smol, .dao, .xyz
         </p>
       </form>
     </section>

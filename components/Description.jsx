@@ -1,5 +1,7 @@
-import React from 'react';
-import Domain from '../components/svg/Domain';
+import React from "react";
+import Fill from "../components/svg/Fill";
+import Select from "../components/svg/Select";
+import Buy from "../components/svg/Buy";
 
 const Description = () => {
   return (
@@ -15,17 +17,17 @@ const Description = () => {
 
       <div className="flex flex-col text-white text-center items-center justify-center mt-10 gap-16 md:flex-row md:gap-24">
         <div>
-          <Domain />
+          <Fill />
           <p className="mt-2">Put in Name Choice</p>
         </div>
 
         <div>
-          <Domain />
+          <Select />
           <p className="mt-2">Select Domain</p>
         </div>
 
         <div>
-          <Domain />
+          <Buy />
           <p className="mt-2">Buy Domain</p>
         </div>
       </div>

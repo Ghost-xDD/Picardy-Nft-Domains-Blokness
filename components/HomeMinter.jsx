@@ -120,7 +120,7 @@ const HomeMinter = () => {
           />
           <div className="p-0 rounded-r-2xl">
             <select
-              className="focus:outline-none h-[42px]  rounded-r-2xl bg-yellow-600 font-bold"
+              className="focus:outline-none h-[42px]  rounded-r-2xl bg-[#f9cc16] font-bold"
               onChange={handleChange}
             >
               {tlds
@@ -144,7 +144,7 @@ const HomeMinter = () => {
             className="text-white font-bold border-2 border-[button-gradient] flex mx-auto justify-center bg-black hover:opacity-80 focus:ring-4 focus:outline-none focus:ring-blue-300  rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-black dark:hover:bg-black dark:focus:ring-black"
             onClick={mintDomain}
           >
-            Buy Domain
+            Mint Domain
           </button>
         )}
         {!isConnected && (
