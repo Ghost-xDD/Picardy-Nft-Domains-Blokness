@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
-import { logo } from '../public/assets';
+import { logo, menu, close } from '../public/assets';
 import { navLinks } from '../helper';
 import Image from 'next/image';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
@@ -43,7 +43,7 @@ const Navbar = () => {
         ))}
       </ul>
 
-      <div>
+      <div className="hidden sm:block">
         <ConnectButton
           showBalance={false}
           chainStatus="name"
@@ -51,7 +51,12 @@ const Navbar = () => {
         />
       </div>
 
-      {/* <div className="sm:hidden flex flex-1 justify-end items-center">
+      {/* mobile menu */}
+      <div className="flex sm:hidden text-end justify-end  w-[80%]">
+        <ConnectButton />
+      </div>
+
+      <div className="sm:hidden flex flex-1 justify-end items-center">
         <Image
           src={toggle ? close : menu}
           alt="menu"
@@ -62,24 +67,23 @@ const Navbar = () => {
         <div
           className={`${
             !toggle ? 'hidden' : 'flex'
-          } p-6 bg-black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
+          } p-6 feature-bal absolute top-20 right-0 mx-4 my-2 min-w-[140px] rounded-xl sidebar`}
         >
-          <ul className="list-none flex justify-end items-start flex-1 flex-col">
-            {navLinks.map((nav, index) => (
-              <li
-                key={nav.id}
-                className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                  active === nav.title ? 'text-white' : 'text-dimWhite'
-                } ${index === navLinks.length - 1 ? 'mb-0' : 'mb-4'}`}
-                onClick={() => setActive(nav.title)}
+          <ul className="list-none flex justify-end items-start flex-1 text-gray-300 flex-col">
+            {navLinks.map((nav) => (
+              <Link
+                key={nav.name}
+                href={nav.href}
+                className={`font-poppins font-normal cursor-pointer text-[16px]  hover:opacity-80 ${
+                  active === nav.name ? 'text-white' : 'text-gray-300'
+                } `}
               >
-                <a href={`#${nav.id}`}>{nav.title}</a>
-              </li>
+                <span className="truncate mt-4">{nav.name}</span>
+              </Link>
             ))}
-            <ConnectButton />
           </ul>
         </div>
-      </div> */}
+      </div>
     </nav>
   );
 };
