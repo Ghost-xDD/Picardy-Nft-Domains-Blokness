@@ -22,9 +22,9 @@ const CustomMinter = () => {
                   openTab === 1
                     ? 'bg-gradient-to-r from-[#C6FFDD] via-[#FBD786] to-[#F7797D] '
                     : ''
-                } inline-block px-4 py-2 text-black font-bold rounded-xl shadow cursor-pointer`}
+                } inline-block px-4 w-[170px]  h-full py-2 text-black font-bold rounded-xl shadow cursor-pointer`}
               >
-                SBT Domains
+                SBT <br className="block sm:hidden" /> Domains
               </a>
             </li>
             <li>
