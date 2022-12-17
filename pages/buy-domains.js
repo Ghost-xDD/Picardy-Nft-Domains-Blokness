@@ -1,6 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import { Hero, HomeMinter, Contact } from '../components';
+import { Hero,  HomeMinter, Contact } from '../components';
 
 const header = 'Permissionless NFT Domains';
 const description = 'Mint your identity on the Blockchain';
