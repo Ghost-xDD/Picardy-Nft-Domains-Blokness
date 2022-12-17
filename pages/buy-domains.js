@@ -1,24 +1,24 @@
 import React from 'react';
 import Head from 'next/head';
-import { Hero, CustomMinter, Contact } from '../components';
+import { Hero, HomeMinter, Contact } from '../components';
 
-const header = 'Customized Top Level Domains';
-const description = 'Customize and select your choice top level domain';
+const header = 'Permissionless NFT Domains';
+const description = 'Mint your identity on the Blockchain';
 
 const CustomTLD = () => {
   return (
     <div>
       <Head>
-        <title>Customized Domains | Picardy</title>
+        <title>Buy Domain | Picardy</title>
         <meta
           name="description"
-          content="Customize and select your choice top level domain"
+          content="Mint your identity on the blockchain"
         />
       </Head>
 
       <Hero header={header} description={description} />
 
-      <CustomMinter />
+      <HomeMinter />
       <div className="bg-black">
         <Contact />
       </div>

@@ -1,5 +1,7 @@
-import React from 'react';
-import Domain from '../components/svg/Domain';
+import React from "react";
+import Fill from "../components/svg/Fill";
+import Select from "../components/svg/Select";
+import Buy from "../components/svg/Buy";
 
 const Description = () => {
   return (
@@ -8,25 +10,28 @@ const Description = () => {
         <h1 className="text-4xl font-bold">
           Get Your Picardy Domains in Few Steps
         </h1>
-        <p className="mt-4 text-gray-400">
+        <p className="mt-4 text-white">
           Become an owner of a permissionless domain in 3 easy steps
         </p>
       </div>
 
       <div className="flex flex-col text-white text-center items-center justify-center mt-10 gap-16 md:flex-row md:gap-24">
         <div>
-          <Domain />
-          <p className="mt-2">Put in Name Choice</p>
+          <Fill />
+          <p className="mt-2">
+            Put in Name <br />
+            Choice
+          </p>
         </div>
 
         <div>
-          <Domain />
+          <Select />
           <p className="mt-2">Select Domain</p>
         </div>
 
         <div>
-          <Domain />
-          <p className="mt-2">Buy Domain</p>
+          <Buy />
+          <p className="mt-2">Mint Domain</p>
         </div>
       </div>
     </div>

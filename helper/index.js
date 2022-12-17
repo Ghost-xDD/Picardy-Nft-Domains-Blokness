@@ -8,8 +8,8 @@ export const navLinks = [
     href: '/',
   },
   {
-    name: 'Custom TLD',
-    href: '/custom-tld',
+    name: 'Buy Domain',
+    href: '/buy-domains',
   },
   {
     name: 'Profile',

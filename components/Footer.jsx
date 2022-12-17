@@ -1,8 +1,8 @@
-import Link from 'next/link';
-import styles from '../helper/style';
-import { FaDiscord } from 'react-icons/fa';
-import { BsGithub, BsTwitter } from 'react-icons/bs';
-import { SiMedium } from 'react-icons/si';
+import Link from "next/link";
+import styles from "../helper/style";
+import { FaDiscord } from "react-icons/fa";
+import { BsGithub, BsTwitter } from "react-icons/bs";
+import { SiMedium } from "react-icons/si";
 
 const Footer = () => (
   <section
@@ -13,6 +13,7 @@ const Footer = () => (
       <Link href="/">How it Works</Link>
       <Link href="/">FAQ</Link>
       <Link href="/">Blog</Link>
+      <Link href="/profile">Profile</Link>
     </div>
 
     <div className="flex flex-row gap-6 text-gray-300 cursor-pointer text-2xl pt-8 md:mt-0 mt-2">
@@ -27,7 +28,6 @@ const Footer = () => (
         Ⓒ 2022 Picardy NFT Domains. All Rights Reserved.
       </p>
     </div>
-
   </section>
 );
 

@@ -1,6 +1,6 @@
-import React from 'react';
-import Head from 'next/head';
-import styles from '../helper/style';
+import React from "react";
+import Head from "next/head";
+import styles from "../helper/style";
 
 const AboutContent = () => {
   return (
@@ -26,11 +26,11 @@ const AboutContent = () => {
         <div>
           <h4 className="font-bold mt-6 text-lg">Usecases for PND</h4>
           <p className="mt-4">
-            <span className="font-bold text-stone-500">Transferable:</span>{' '}
+            <span className="font-bold text-[#f9cc16]">Transferable:</span>{" "}
             whitelist communities (roles).
           </p>
           <p className="mt-4">
-            <span className="font-bold text-stone-500">Non Transferable:</span>{' '}
+            <span className="font-bold text-[#f9cc16]">Non Transferable:</span>{" "}
             schools, DAOs, IDs.
           </p>
         </div>
@@ -42,8 +42,8 @@ const AboutContent = () => {
         <ul className="list-disc pl-8">
           <li className="mb-6">
             Crypto addresses are strings of numbers and alphabets together which
-            makes them hard to remember. Having a human readable address like{' '}
-            <span className="text-gray-700 font-bold">esse.degen</span>, makes
+            makes them hard to remember. Having a human readable address like{" "}
+            <span className="text-[#f9cc16] font-bold">esse.degen</span>, makes
             it easy to remember anytime you need it.
           </li>
           <li className="mb-6">

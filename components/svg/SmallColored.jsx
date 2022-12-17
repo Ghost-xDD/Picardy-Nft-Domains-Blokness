@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 function SmallColored() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="200"
-      height="200"
+      width="150"
+      height="150"
       fill="none"
       viewBox="0 0 200 200"
     >
@@ -26,7 +26,7 @@ function SmallColored() {
           gradientUnits="userSpaceOnUse"
         >
           <stop stopColor="#F9CC16"></stop>
-          <stop offset="0.5" stopColor="#F9CC16" stopOpacity="0.604"></stop>
+          <stop offset="0.3" stopColor="#F9CC16" stopOpacity="1"></stop>
           <stop offset="1" stopColor="violet"></stop>
         </linearGradient>
       </defs>
